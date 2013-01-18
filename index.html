@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Leap JavaScript API</title>
+  </head>
+  <body>
+    <h1>Leap JavaScript/WebSocket Sample</h1>
+    <div id="connection">WebSocket not connected</div>
+    <div id="main">
+      <p>JSON Frame data:</p>
+      <div id="output">
+      </div>
+    </div>
+  <script type="text/javascript" src="jquery-1.9.0.min.js"></script>
+  <script type="text/javascript" src="handlebars-1.0.rc.1.js"></script>
+  <script id="hands-template" type="text/x-handlebars-template">
+    <div id="hands">
+      <p># of hands: {{hands.length}}</p>
+
+      {{#each hands}}
+      <p>ID: {{this.id}}</p>
+      <table>
+        <tr>
+          <th></th>
+          <th>X</th>
+          <th>Y</th>
+          <th>Z</th>
+        </tr>
+        <tr>
+          <td>Palm Position</tc>
+          <td>{{this.palmPosition[0]}}</td>
+          <td>{{this.palmPosition[1]}}</td>
+          <td>{{this.palmPosition[1]}}</td>
+        </tr>
+        <tr>
+          <td>Direction</td>
+          <td>{{this.direction[0]}}</td>
+          <td>{{this.direction[1]}}</td>
+          <td>{{this.direction[1]}}</td>
+        </tr>
+        <tr>
+          <td>Sphere Center</td>
+          <td>{{this.sphereCenter[0]}}</td>
+          <td>{{this.sphereCenter[1]}}</td>
+          <td>{{this.sphereCenter[1]}}</td>
+        </tr>
+        <tr>
+          <td>Sphere Radius</td>
+          <td colspan="3">{{this.sphereRaduis}}</td>
+        </tr>
+      {{/each}}
+      </table>
+    </div>
+  </script>
+  <script id="pointables-template" type="text/x-handlebars-template">
+    <div id="pointables">
+      <p># of pointables: {{pointables.length}}</p>
+
+      {{#each pointables}}
+      <p>ID: {{this.id}}</p>
+      <p>Hand ID: {{this.handId}}</p>
+      <p>Length: {{this.length}}</p>
+      <p>Is a tool? {{tool}}</p>
+      <table>
+        <tr>
+          <th></th>
+          <th>X</th>
+          <th>Y</th>
+          <th>Z</th>
+        </tr>
+        <tr>
+          <td>Direction</td>
+          <td>{{this.direction[0]}}</td>
+          <td>{{this.direction[1]}}</td>
+          <td>{{this.direction[1]}}</td>
+        </tr>
+        <tr>
+          <td>Tip Position</tc>
+          <td>{{this.tipPosition[0]}}</td>
+          <td>{{this.tipPosition[1]}}</td>
+          <td>{{this.tipPosition[1]}}</td>
+        </tr>
+        <tr>
+          <td>Tip Velocity</td>
+          <td>{{this.tipVelocity[0]}}</td>
+          <td>{{this.tipVelocity[1]}}</td>
+          <td>{{this.tipVelocity[1]}}</td>
+        </tr>
+      {{/each}}
+      </table>
+    </div>
+  </script>
+  <script>
+    var ws;
+
+    // Support both the WebSocket and MozWebSocket objects
+    if ((typeof(WebSocket) == 'undefined') &&
+        (typeof(MozWebSocket) != 'undefined')) {
+      WebSocket = MozWebSocket;
+    }
+
+    // Create the socket with event handlers
+    $(document).ready(function () {
+      var handsSource = $("#hands-template").html();
+      var handsTemplate = Handlebars.compile(handsSource);
+
+      //Create and open the socket
+      ws = new WebSocket("ws://localhost:6437/");
+
+      // On successful connection
+      ws.onopen = function(event) {
+        $("#connection").text("WebSocket connection open!");
+      };
+
+      // On message received
+      ws.onmessage = function(event) {
+        var obj = JSON.parse(event.data);
+
+        var handsContext = {hands: obj.hands};
+        var handsHtml = handsTemplate.template(handsContext);
+        var pointablesContext = {hands: obj.pointables};
+        var pointablesHtml = pointablesTemplate.template(pointablesContext);
+        $("#output").empty();
+        $("#output").append(handsHtml);
+        $("#output").append(pointablesHtml);
+        // var str = JSON.stringify(obj, undefined, 2);
+        // $("#output").html('<pre>' + str + '</pre>');
+      };
+
+      // On socket close
+      ws.onclose = function(event) {
+        ws = null;
+        $("#connection").text("WebSocket connection closed");
+      }
+
+      //On socket error
+      ws.onerror = function(event) {
+        alert("Received error");
+      };
+    });
+    </script>
+  </body>
+</html>
