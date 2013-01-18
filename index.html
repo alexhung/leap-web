@@ -163,8 +163,8 @@
 
     function initThree () {
       // set the scene size
-      var WIDTH = 400,
-        HEIGHT = 300;
+      var WIDTH = $(window).width(),
+        HEIGHT = $(window).height();
 
       // set some camera attributes
       var VIEW_ANGLE = 45,
@@ -213,6 +213,11 @@
 
     function render3D (leapData) {
       $("#output").empty();
+      for (var i = scene.children.length - 1; i >= 0; i--) {
+        if (scene.children[i] !== plane && scene.children[i] !== camera) {
+          scene.remove(scene.children[i]);
+        }
+      };
 
       // set up the sphere vars
       var radius = 50,
@@ -243,10 +248,10 @@
 
         // add the sphere to the scene
         scene.add(sphere);
-
-        // draw!
-        renderer.render(scene, camera);
       };
+
+      // draw!
+      renderer.render(scene, camera);
     };
     </script>
   </body>
