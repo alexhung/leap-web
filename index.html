@@ -13,6 +13,8 @@
       <input type="checkbox" id="debug" checked="" />Debug
       <div id="output">
       </div>
+      <div id="3dContainer" style="width: 800px; height: 600px;">
+      </div>
     </div>
   <script type="text/javascript" src="jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="handlebars-1.0.rc.1.js"></script>
@@ -97,7 +99,7 @@
   <script>
     var ws, renderType;
     var handsTemplate, pointablesTemplate;
-    var render, camera, scene, sphere;
+    var renderer, camera, scene, spheres = new Array();
 
     // Support both the WebSocket and MozWebSocket objects
     if ((typeof(WebSocket) == 'undefined') &&
@@ -110,6 +112,11 @@
       renderType = $("#main input[name='visualization-type']").val();
       $("#main input[name='visualization-type']").on('change', function () {
         renderType = $(this).val();
+
+        if (renderType === "3d") {
+          $("#output").empty();
+          render();
+        }
       });
 
       initTemplates();
@@ -163,22 +170,17 @@
 
     function initThree () {
       // set the scene size
-      var WIDTH = $(window).width(),
-        HEIGHT = $(window).height();
+      var WIDTH = $("#3dContainer").width(),
+        HEIGHT = $("#3dContainer").height();
 
       // set some camera attributes
       var VIEW_ANGLE = 45,
         ASPECT = WIDTH / HEIGHT,
-        NEAR = 0.1,
+        NEAR = 1,
         FAR = 10000;
-
-      // get the DOM element to attach to
-      // - assume we've got jQuery to hand
-      var $container = $('#output');
 
       // create a WebGL renderer, camera
       // and a scene
-      renderer = new THREE.WebGLRenderer();
       camera =
         new THREE.PerspectiveCamera(
           VIEW_ANGLE,
@@ -186,17 +188,24 @@
           NEAR,
           FAR);
 
+      // the camera starts at 0,0,0
+      // so pull it back
+      camera.position.z = 500;
+
       scene = new THREE.Scene();
 
       // add the camera to the scene
       scene.add(camera);
 
-      // the camera starts at 0,0,0
-      // so pull it back
-      camera.position.z = 300;
+      createSpheres(scene);
 
       // start the renderer
+      renderer = new THREE.WebGLRenderer();
       renderer.setSize(WIDTH, HEIGHT);
+
+      // get the DOM element to attach to
+      // - assume we've got jQuery to hand
+      var $container = $('#3dContainer');
 
       // attach the render-supplied DOM element
       $container.append(renderer.domElement);
@@ -211,13 +220,59 @@
       // $("#output").html('<pre>' + str + '</pre>');
     };
 
+    function createSpheres (scene) {
+      // set up the sphere vars
+      var radius = 10,
+          segments = 16,
+          rings = 16;
+
+      // create the sphere's material
+      var sphereMaterial =
+        new THREE.MeshLambertMaterial(
+          {
+            color: 0xCC0000
+          });
+
+      for (var i = 0; i < 5; i++) {
+        // create a new mesh with
+        // sphere geometry - we will cover
+        // the sphereMaterial next!
+        var sphere = new THREE.Mesh(
+          new THREE.SphereGeometry(
+            radius,
+            segments,
+            rings),
+          sphereMaterial);
+
+        // add the sphere to the scene
+        scene.add(sphere);
+        spheres.push(sphere);
+      }
+    };
+
     function render3D (leapData) {
-      $("#output").empty();
+      if (leapData.pointables.length == 0) {
+        return;
+      }
+
+      var width = $("#3dContainer").width();
+      var height = $("#3dContainer").height();
+
+      for (var i = 0; i < leapData.pointables.length; i++) {
+        spheres[i].position.x = leapData.pointables[i].tipPosition[0];
+        spheres[i].position.y = leapData.pointables[i].tipPosition[1] - 100;
+        spheres[i].position.z = leapData.pointables[i].tipPosition[2];
+      };
+
+      // console.log("Sphere - x:" + sphere.position.x + " y:" + sphere.position.y + " z:" + sphere.position.z);
+    };
+
+    function render3DOld (leapData) {
       for (var i = scene.children.length - 1; i >= 0; i--) {
-        if (scene.children[i] !== plane && scene.children[i] !== camera) {
+        if (scene.children[i] !== camera) {
           scene.remove(scene.children[i]);
         }
-      };
+      }
 
       // set up the sphere vars
       var radius = 50,
@@ -231,6 +286,8 @@
             color: 0xCC0000
           });
 
+      var width = $("#3dContainer").width();
+
       for (var i = 0; i < leapData.pointables.length; i++) {
         // create a new mesh with
         // sphere geometry - we will cover
@@ -242,17 +299,21 @@
             rings),
           sphereMaterial);
 
-        sphere.position.x = leapData.pointables[i].tipPosition[0];
-        sphere.position.y = leapData.pointables[i].tipPosition[1];
+        sphere.position.x = leapData.pointables[i].tipPosition[0] + (width / 2);
+        sphere.position.y = leapData.pointables[i].tipPosition[1] * -1;
         sphere.position.z = leapData.pointables[i].tipPosition[2];
+
+        console.log("Sphere - x:" + sphere.position.x + " y:" + sphere.position.y + " z:" + sphere.position.z);
 
         // add the sphere to the scene
         scene.add(sphere);
       };
-
-      // draw!
-      renderer.render(scene, camera);
     };
+
+    function render() {
+      requestAnimationFrame(render);
+      renderer.render(scene, camera);
+    }
     </script>
   </body>
 </html>
