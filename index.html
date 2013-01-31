@@ -2,19 +2,18 @@
   <html>
   <head>
     <title>Leap JavaScript API</title>
+    <link rel="stylesheet" type="text/css" href="leap.css">
   </head>
-  <body>
+  <body style="height:100%; display:table;">
     <h1>Leap JavaScript/WebSocket Sample</h1>
     <div id="connection">WebSocket not connected</div>
-    <div id="main">
+    <div id="main" style="width:100%; height:100%; margin:10px; display:table-row;">
       <p>JSON Frame data:</p>
       <input type="radio" name="visualization-type" value="tabular" checked="checked" />Tabular&nbsp;
       <input type="radio" name="visualization-type" value="3d" />3D&nbsp;
       <input type="checkbox" id="debug" checked="" />Debug
-      <div id="output">
-      </div>
-      <div id="3dContainer" style="width: 800px; height: 600px;">
-      </div>
+      <div id="output"></div>
+      <div id="3d-container" style="width:100%; height:100%; display:table-row; background-color:#E8E8E8;"></div>
     </div>
   <script type="text/javascript" src="jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="handlebars-1.0.rc.1.js"></script>
@@ -110,6 +109,7 @@
     // Create the socket with event handlers
     $(document).ready(function () {
       renderType = $("#main input[name='visualization-type']").val();
+
       $("#main input[name='visualization-type']").on('change', function () {
         renderType = $(this).val();
 
@@ -118,6 +118,8 @@
           render();
         }
       });
+
+      $("#3d-container").hide();
 
       initTemplates();
       initThree();
@@ -148,11 +150,11 @@
         switch (renderType) {
           case "tabular":
             renderTabularData(obj);
-          break;
+            break;
 
           case "3d":
             render3D(obj);
-          break;
+            break;
         }
       };
 
@@ -170,8 +172,8 @@
 
     function initThree () {
       // set the scene size
-      var WIDTH = $("#3dContainer").width(),
-        HEIGHT = $("#3dContainer").height();
+      var WIDTH = $("#3d-container").width(),
+        HEIGHT = $("#3d-container").height();
 
       // set some camera attributes
       var VIEW_ANGLE = 45,
@@ -199,16 +201,24 @@
 
       createSpheres(scene);
 
+      // create a point light
+      var pointLight =
+        new THREE.PointLight(0xFFFFFF);
+
+      // set its position
+      pointLight.position.x = 10;
+      pointLight.position.y = 50;
+      pointLight.position.z = 130;
+
+      // add to the scene
+      scene.add(pointLight);
+
       // start the renderer
       renderer = new THREE.WebGLRenderer();
       renderer.setSize(WIDTH, HEIGHT);
 
-      // get the DOM element to attach to
-      // - assume we've got jQuery to hand
-      var $container = $('#3dContainer');
-
       // attach the render-supplied DOM element
-      $container.append(renderer.domElement);
+      $('#3d-container').append(renderer.domElement);
     };
 
     function renderTabularData (leapData) {
@@ -255,8 +265,10 @@
         return;
       }
 
-      var width = $("#3dContainer").width();
-      var height = $("#3dContainer").height();
+      $("#3d-container").show();
+
+      var width = $("#3d-container").width();
+      var height = $("#3d-container").height();
 
       for (var i = 0; i < leapData.pointables.length; i++) {
         spheres[i].position.x = leapData.pointables[i].tipPosition[0];
@@ -265,49 +277,6 @@
       };
 
       // console.log("Sphere - x:" + sphere.position.x + " y:" + sphere.position.y + " z:" + sphere.position.z);
-    };
-
-    function render3DOld (leapData) {
-      for (var i = scene.children.length - 1; i >= 0; i--) {
-        if (scene.children[i] !== camera) {
-          scene.remove(scene.children[i]);
-        }
-      }
-
-      // set up the sphere vars
-      var radius = 50,
-          segments = 16,
-          rings = 16;
-
-      // create the sphere's material
-      var sphereMaterial =
-        new THREE.MeshLambertMaterial(
-          {
-            color: 0xCC0000
-          });
-
-      var width = $("#3dContainer").width();
-
-      for (var i = 0; i < leapData.pointables.length; i++) {
-        // create a new mesh with
-        // sphere geometry - we will cover
-        // the sphereMaterial next!
-        sphere = new THREE.Mesh(
-          new THREE.SphereGeometry(
-            radius,
-            segments,
-            rings),
-          sphereMaterial);
-
-        sphere.position.x = leapData.pointables[i].tipPosition[0] + (width / 2);
-        sphere.position.y = leapData.pointables[i].tipPosition[1] * -1;
-        sphere.position.z = leapData.pointables[i].tipPosition[2];
-
-        console.log("Sphere - x:" + sphere.position.x + " y:" + sphere.position.y + " z:" + sphere.position.z);
-
-        // add the sphere to the scene
-        scene.add(sphere);
-      };
     };
 
     function render() {

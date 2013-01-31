@@ -1,0 +1,490 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"hand",
+				"handsHtml"
+			],
+			[
+				"Ht",
+				"Http500"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"HT",
+				"Http404"
+			],
+			[
+				"nf",
+				"nfc_id"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"Re",
+				"Request"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"Requ",
+				"RequestContext"
+			],
+			[
+				"DE",
+				"DEFAULT_DATABASE"
+			],
+			[
+				"HTT",
+				"HttpResponse"
+			],
+			[
+				"ul",
+				"urllib2"
+			],
+			[
+				"url",
+				"urllib2"
+			],
+			[
+				"redi",
+				"redirect_uri"
+			],
+			[
+				"fou",
+				"foursqure_authenticate_url"
+			],
+			[
+				"e",
+				"except"
+			],
+			[
+				"f",
+				"FOURSQUARE"
+			],
+			[
+				"fo",
+				"foursqure_authenticate_url"
+			],
+			[
+				"red",
+				"redirect_uri"
+			],
+			[
+				"cl",
+				"client_id"
+			],
+			[
+				"cli",
+				"client_id"
+			],
+			[
+				"au",
+				"authorization_code"
+			],
+			[
+				"c",
+				"CharField"
+			],
+			[
+				"re",
+				"response"
+			],
+			[
+				"pho",
+				"photoElements"
+			],
+			[
+				"full",
+				"full_name"
+			],
+			[
+				"phto",
+				"photoElements"
+			],
+			[
+				"ph",
+				"photoElements"
+			],
+			[
+				"get",
+				"getPicture"
+			],
+			[
+				"text",
+				"textStatus"
+			],
+			[
+				"or",
+				"originalAttribution"
+			],
+			[
+				"im",
+				"image-large"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"add",
+				"add-to-favorite"
+			],
+			[
+				"fon",
+				"font	font-weight: weight"
+			],
+			[
+				"d",
+				"display	display: inline"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"pack",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"twe",
+				"Twitter timeline"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pcakg",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": true,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/alexhung/Desktop/HorizantRLS_300x600_v1c.html",
+		"/Users/alexhung/Desktop/Leap_SDK/samples/Sample.html",
+		"/Volumes/My Stories/Master PC - Creampie Edition/Master PC - Creampie Edition - Chapter 6.txt",
+		"/Volumes/My Stories/Master PC - Creampie Edition/Master PC - Creampie Edition - Chapter 7.txt",
+		"/Volumes/My Stories/Master PC - Creampie Edition/Master PC - Creampie Edition - Chapter 5.txt",
+		"/Users/alexhung/Desktop/TestFlightSDK1.1/README.md",
+		"/Volumes/My Stories/Master PC - Creampie Edition/Master PC - Creampie Edition - Chapter 1.txt",
+		"/Volumes/My Stories/Master PC - Creampie Edition/Master PC - Creampie Edition - Chapter 2.txt",
+		"/Volumes/My Stories/Master PC - Creampie Edition/Master PC - Creampie Edition - Chapter 3.txt",
+		"/Volumes/My Stories/Master PC - Creampie Edition/Master PC - Creampie Edition - Chapter 4.txt",
+		"/Volumes/My Stories/Master PC - Creampie Edition/Master PC - Creampie Edition - Chapter 8.txt",
+		"/Volumes/My Stories/Master PC - Creampie Edition/Master PC - Creampie Edition - Chapter 9.txt",
+		"/Users/alexhung/Desktop/chapter 6 - new.txt",
+		"/Users/alexhung/Desktop/chapter 5 - new.txt",
+		"/Users/alexhung/Desktop/pynfc-0.0.4/nfc.i",
+		"/Users/alexhung/Documents/Dev/Python/pynfc/README",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfc/nfcheckin.py",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/models.py",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/tests/swipe_local.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/views.py",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/templates/swiped.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/urls.py",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/tests/swipe_remote.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/settings.py",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/templates/base.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/static/nfcheckin.js",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/static/style.css",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/templates/404.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/templates/500.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/templates/authenticate.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/templates/index.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/templates/registered.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/forms.py",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/admin.py",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/.gitignore",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/Templates/authenticate.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/nfcheckin/Templates/index.html",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/requirements.txt",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/Procfile",
+		"/Users/alexhung/Documents/Dev/Python/mccannResourceManagementTool/src/mccann_rmt/resource_management/views/index.py",
+		"/Users/alexhung/Documents/Dev/Python/mccannResourceManagementTool/src/mccann_rmt/resource_management/models/booking.py",
+		"/Users/alexhung/Documents/Dev/Python/mccannResourceManagementTool/pavement.py",
+		"/Users/alexhung/Documents/Dev/Python/nfcheckin/pavement.py",
+		"/Users/alexhung/.ssh/config",
+		"/Users/alexhung/Desktop/WD Green.txt",
+		"/Users/alexhung/Desktop/Synology.txt",
+		"/Volumes/Untitled/cmdline.txt",
+		"/Users/alexhung/.ssh/id_rsa_diskstation.pub",
+		"/Users/alexhung/Downloads/Synology/ssh/id_rsa.pub",
+		"/Users/alexhung/Google Drive/Alt.NET/Deploying Apps to the Cloud/nodejs/views/index.jade",
+		"/Users/alexhung/Google Drive/Alt.NET/Deploying Apps to the Cloud/nodejs/demo.js",
+		"/Volumes/My Stories/Birthday Presents/Birthday Presents.txt",
+		"/Users/alexhung/Documents/Dev/iPhone/this-is-new-york/cordova/this-is-new-york/www/styles/this-is-new-york.css",
+		"/Users/alexhung/Documents/Dev/iPhone/this-is-new-york/cordova/this-is-new-york/www/details.html",
+		"/Users/alexhung/Documents/Dev/iPhone/this-is-new-york/cordova/this-is-new-york/www/index.html",
+		"/Users/alexhung/Documents/Dev/iPhone/this-is-new-york/cordova/this-is-new-york/www/main.html",
+		"/Users/alexhung/Desktop/phonegap-phonegap-plugins-1c864bf/iOS/ActionSheet/README.md",
+		"/Users/alexhung/Documents/Dev/iPhone/this-is-new-york/cordova/this-is-new-york/www/favorites.html",
+		"/Users/alexhung/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/alexhung/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/alexhung/Desktop/passwords.txt",
+		"/Users/alexhung/Library/Application Support/Sublime Text 2/Packages/Default/Base File.sublime-settings",
+		"/Users/alexhung/Library/Application Support/Sublime Text 2/Packages/User/Base File.sublime-settings",
+		"/Users/alexhung/Library/Application Support/Sublime Text 2/Packages/Default/Global.sublime-settings",
+		"/Users/alexhung/Library/Application Support/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/alexhung/Desktop/Drug of Desire.txt",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/pavement.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/templates/videos.html",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/templates/featured_videos.html",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/utils/movie_builder.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/views/contest.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/views/videos.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/wwlfg1.mccannny.us.cfg",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/fabfile.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/settings.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/models/user.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/models/submission.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/.git/config",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/templates/index.html",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/templates/base.html",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/fixtures/initial_data.json",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/static/js/utils.js",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/static/js/facebook.js",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/views/index.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/fixtures/test_data.json",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/tests/views/upload_tests.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/templates/upload.html",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/tests/views/landing_page_tests.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/fixtures/production_data.json",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/static/css/style.css",
+		"/Users/alexhung/.profile",
+		"/Users/alexhung/Desktop/Dropbox/Sync/ssh_config",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/src/lose_for_good/facebook/utils/facebook_helper.py",
+		"/Users/alexhung/Documents/Dev/Python/wwLoseForGood/ci.mccannny.us.cfg",
+		"/Users/alexhung/Music/iTunes/iTunes Library.itl",
+		"/Users/alexhung/Music/iTunes/iTunes Music Library.xml"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"  <script id=\"hands-template\" type=\"text/x-handlebars-template\">\n    <div id=\"hands\">\n      <p># of hands: {{hands.length}}</p>\n\n      {{#each hands}}\n      <p>ID: {{this.id}}</p>\n      <p>Position - X:{{this.palmPosition[0]}} Y:{{this.palmPosition[1]}} Z:{{this.palmPosition[1]}}</p>\n      <p>Direction - X:{{this.direction[0]}} Y:{{this.direction[1]}} Z:{{this.direction[1]}}</p>\n      <p>Sphere Center - X:{{this.sphereCenter[0]}} Y:{{this.sphereCenter[1]}} Z:{{this.sphereCenter[1]}}</p>\n      <p>Sphere Radius - {{this.sphereRaduis}}</p>\n      {{/each}}\n    </div>\n  </script>\n",
+			"document.getElementById(\"",
+			"Modulation",
+			"Allison",
+			"new_blue",
+			"&#39;",
+			"&apos;",
+			"15:17:37",
+			"/Desktop/keys"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"$(\"#",
+			"Louise",
+			"&#39;",
+			"00:00:00",
+			"/Desktop/Dropbox/Work/McCann/Keys"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"set",
+				"nfcheckin/settings.py"
+			],
+			[
+				"setting",
+				"src/lose_for_good/settings.py"
+			],
+			[
+				"pa",
+				"pavement.py"
+			],
+			[
+				"movi",
+				"src/lose_for_good/facebook/utils/movie_builder.py"
+			],
+			[
+				"fa",
+				"fabfile.py"
+			],
+			[
+				"pave",
+				"pavement.py"
+			],
+			[
+				"wwl",
+				"wwlfg1.mccannny.us.cfg"
+			],
+			[
+				"user",
+				"src/lose_for_good/facebook/models/user.py"
+			],
+			[
+				"subm",
+				"src/lose_for_good/facebook/models/submission.py"
+			],
+			[
+				"ind",
+				"src/lose_for_good/facebook/templates/index.html"
+			],
+			[
+				"ba",
+				"src/lose_for_good/facebook/templates/base.html"
+			],
+			[
+				"init",
+				"src/lose_for_good/facebook/fixtures/initial_data.json"
+			],
+			[
+				"inde",
+				"src/lose_for_good/facebook/views/index.py"
+			],
+			[
+				"base",
+				"src/lose_for_good/facebook/templates/base.html"
+			],
+			[
+				"test",
+				"src/lose_for_good/facebook/fixtures/test_data.json"
+			],
+			[
+				"land",
+				"src/lose_for_good/facebook/tests/views/landing_page_tests.py"
+			],
+			[
+				"upload_",
+				"src/lose_for_good/facebook/tests/views/upload_tests.py"
+			],
+			[
+				"sty",
+				"src/lose_for_good/facebook/static/css/style.css"
+			],
+			[
+				"submiss",
+				"src/lose_for_good/facebook/models/submission.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 254.875,
+	"status_bar_visible": true
+}
