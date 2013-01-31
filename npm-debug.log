@@ -1,0 +1,42 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'leapjs' ]
+info using npm@1.1.21
+info using node@v0.6.18
+verbose config file /Users/alexhung/.npmrc
+verbose config file /usr/local/etc/npmrc
+verbose config file /usr/local/lib/node_modules/npm/npmrc
+verbose caching /Users/alexhung/Documents/Dev/node_modules/express/package.json
+verbose loadDefaults express@2.5.2
+verbose caching /Users/alexhung/Documents/Dev/node_modules/instagram-node-lib/package.json
+verbose loadDefaults instagram-node-lib@0.0.7
+verbose cache add [ 'leapjs', null ]
+silly cache add: name, spec, args [ undefined, 'leapjs', [ 'leapjs', null ] ]
+verbose parsed url { pathname: 'leapjs', path: 'leapjs', href: 'leapjs' }
+verbose addNamed [ 'leapjs', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'leapjs', '', false ]
+verbose raw, before any munging leapjs
+verbose url resolving [ 'https://registry.npmjs.org/', './leapjs' ]
+verbose url resolved https://registry.npmjs.org/leapjs
+http GET https://registry.npmjs.org/leapjs
+http 404 https://registry.npmjs.org/leapjs
+silly get cb [ 404,
+silly get cb   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+silly get cb     date: 'Thu, 31 Jan 2013 14:30:01 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '52',
+silly get cb     'cache-control': 'must-revalidate' } ]
+ERR! 404 'leapjs' is not in the npm registry.
+ERR! 404 You should bug the author to publish it
+ERR! 404 Note that you can also install from a
+ERR! 404 tarball, folder, or http url, or git url.
+ERR! 
+ERR! System Darwin 11.4.2
+ERR! command "node" "/usr/local/bin/npm" "install" "leapjs"
+ERR! cwd /Users/alexhung/Documents/Dev/leap/leap-web
+ERR! node -v v0.6.18
+ERR! npm -v 1.1.21
+ERR! code E404
+ERR! message 404 Not Found: leapjs
+ERR! errno {}
+verbose exit [ 1, true ]

@@ -16,6 +16,7 @@
       <div id="3d-container" style="width:100%; height:100%; display:table-row; background-color:#E8E8E8;"></div>
     </div>
   <script type="text/javascript" src="jquery-1.9.0.min.js"></script>
+  <script type="text/javascript" src="leap.js"></script>
   <script type="text/javascript" src="handlebars-1.0.rc.1.js"></script>
   <script type="text/javascript" src="three.min.js"></script>
   <script id="hands-template" type="text/x-handlebars-template">
@@ -123,7 +124,19 @@
 
       initTemplates();
       initThree();
-      initWebSocket();
+
+      Leap.loop(function (frame) {
+        // console.log(renderType);
+        switch (renderType) {
+          case "tabular":
+            renderTabularData(frame);
+            break;
+
+          case "3d":
+            render3D(frame);
+            break;
+        }
+      })
     });
 
     function initTemplates () {
@@ -131,43 +144,6 @@
       handsTemplate = Handlebars.compile(handsSource);
       var pointablesSource = $("#pointables-template").html();
       pointablesTemplate = Handlebars.compile(pointablesSource);
-    };
-
-    function initWebSocket () {
-      //Create and open the socket
-      ws = new WebSocket("ws://localhost:6437/");
-
-      // On successful connection
-      ws.onopen = function(event) {
-        $("#connection").text("WebSocket connection open!");
-      };
-
-      // On message received
-      ws.onmessage = function(event) {
-        var obj = JSON.parse(event.data);
-
-        // console.log(renderType);
-        switch (renderType) {
-          case "tabular":
-            renderTabularData(obj);
-            break;
-
-          case "3d":
-            render3D(obj);
-            break;
-        }
-      };
-
-      // On socket close
-      ws.onclose = function(event) {
-        ws = null;
-        $("#connection").text("WebSocket connection closed");
-      }
-
-      //On socket error
-      ws.onerror = function(event) {
-        alert("Received error");
-      };
     };
 
     function initThree () {
