@@ -19,6 +19,30 @@
   <script type="text/javascript" src="leap.js"></script>
   <script type="text/javascript" src="handlebars-1.0.rc.1.js"></script>
   <script type="text/javascript" src="three.min.js"></script>
+  <script id="gestures-template" type="text/x-handlebars-template">
+    <div id="gestures">
+      <p>Gestures</p>
+
+      {{#each gestures}}
+      <p>ID: {{this.id}}</p>
+      <p>Type: {{this.type}}</p>
+      <table>
+        <tr>
+          <th></th>
+          <th>X</th>
+          <th>Y</th>
+          <th>Z</th>
+        </tr>
+        <tr>
+          <td>Direction</td>
+          <td>{{this.direction.[0]}}</td>
+          <td>{{this.direction.[1]}}</td>
+          <td>{{this.direction.[2]}}</td>
+        </tr>
+      {{/each}}
+      </table>
+    </div>
+  </script>
   <script id="hands-template" type="text/x-handlebars-template">
     <div id="hands">
       <p># of hands: {{hands.length}}</p>
@@ -98,7 +122,7 @@
   </script>
   <script>
     var ws, renderType;
-    var handsTemplate, pointablesTemplate;
+    var handsTemplate, pointablesTemplate, gesturesTemplate;
     var renderer, camera, scene, spheres = new Array();
 
     // Support both the WebSocket and MozWebSocket objects
@@ -125,7 +149,7 @@
       initTemplates();
       initThree();
 
-      Leap.loop(function (frame) {
+      Leap.loop({enableGestures: true}, function (frame, done) {
         // console.log(renderType);
         switch (renderType) {
           case "tabular":
@@ -136,6 +160,8 @@
             render3D(frame);
             break;
         }
+
+        done();
       })
     });
 
@@ -144,6 +170,8 @@
       handsTemplate = Handlebars.compile(handsSource);
       var pointablesSource = $("#pointables-template").html();
       pointablesTemplate = Handlebars.compile(pointablesSource);
+      var gesturesSource = $("#gestures-template").html();
+      gesturesTemplate = Handlebars.compile(gesturesSource);
     };
 
     function initThree () {
@@ -199,10 +227,12 @@
 
     function renderTabularData (leapData) {
       var handsHtml = handsTemplate({hands: leapData.hands});
+      var gesturesHtml = gesturesTemplate({gestures: leapData.gestures});
       var pointablesHtml = pointablesTemplate({pointables: leapData.pointables});
       $("#output").empty();
-      $("#output").append(handsHtml).append(pointablesHtml);
-      // var str = JSON.stringify(leapData, undefined, 2);
+      $("#output").append(handsHtml).append(gesturesHtml).append(pointablesHtml);
+      // var str = JSON.stringify(leapData);
+      // console.log(leapData);
       // $("#output").html('<pre>' + str + '</pre>');
     };
 
