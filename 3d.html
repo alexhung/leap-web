@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Leap JavaScript API - 3D</title>
+    <link rel="stylesheet" type="text/css" href="leap.css">
+  </head>
+  <body style="height:100%; display:table;">
+    <h1>Leapjs 3D Sample</h1>
+    <div id="connection">WebSocket not connected</div>
+    <div id="main" style="width:100%; height:100%; margin:10px;">
+      <div id="3d-container" style="width:100%; height:100%; display:table-row; background-color:#E8E8E8;"></div>
+    </div>
+  <script type="text/javascript" src="jquery-1.9.0.min.js"></script>
+  <script type="text/javascript" src="leap.js"></script>
+  <script type="text/javascript" src="three.min.js"></script>
+  <script>
+    var handsTemplate, pointablesTemplate, gesturesTemplate;
+    var renderer, camera, scene, spheres = new Array();
+
+    // Support both the WebSocket and MozWebSocket objects
+    if ((typeof(WebSocket) == 'undefined') &&
+        (typeof(MozWebSocket) != 'undefined')) {
+      WebSocket = MozWebSocket;
+    }
+
+    // Create the socket with event handlers
+    $(document).ready(function () {
+      initThree();
+
+      Leap.loop({enableGestures: true}, function (frame, done) {
+        render3D(frame);
+        done();
+      });
+    });
+
+    function initThree () {
+      // set the scene size
+      var WIDTH = $("#3d-container").width(),
+        HEIGHT = $("#3d-container").height();
+
+      // set some camera attributes
+      var VIEW_ANGLE = 45,
+        ASPECT = WIDTH / HEIGHT,
+        NEAR = 1,
+        FAR = 10000;
+
+      // create a WebGL renderer, camera
+      // and a scene
+      camera =
+        new THREE.PerspectiveCamera(
+          VIEW_ANGLE,
+          ASPECT,
+          NEAR,
+          FAR);
+
+      // the camera starts at 0,0,0
+      // so pull it back
+      camera.position.z = 500;
+
+      scene = new THREE.Scene();
+
+      // add the camera to the scene
+      scene.add(camera);
+
+      createSpheres(scene);
+
+      // create a point light
+      var pointLight = new THREE.PointLight(0xFFFFFF);
+
+      // set its position
+      pointLight.position.x = 10;
+      pointLight.position.y = 50;
+      pointLight.position.z = 130;
+
+      // add to the scene
+      scene.add(pointLight);
+
+      // start the renderer
+      renderer = new THREE.WebGLRenderer();
+      renderer.setSize(WIDTH, HEIGHT);
+
+      // attach the render-supplied DOM element
+      $('#3d-container').append(renderer.domElement);
+    };
+
+    function createSpheres (scene) {
+      // set up the sphere vars
+      var radius = 10,
+          segments = 16,
+          rings = 16;
+
+      // create the sphere's material
+      var sphereMaterial =
+        new THREE.MeshLambertMaterial(
+          {
+            color: 0xCC0000
+          });
+
+      for (var i = 0; i < 5; i++) {
+        // create a new mesh with
+        // sphere geometry - we will cover
+        // the sphereMaterial next!
+        var sphere = new THREE.Mesh(
+          new THREE.SphereGeometry(
+            radius,
+            segments,
+            rings),
+          sphereMaterial);
+
+        // add the sphere to the scene
+        scene.add(sphere);
+        spheres.push(sphere);
+      }
+    };
+
+    function render3D (leapData) {
+      if (leapData.pointables.length == 0) {
+        return;
+      }
+
+      for (var i = 0; i < leapData.pointables.length; i++) {
+        spheres[i].position.x = leapData.pointables[i].tipPosition[0];
+        spheres[i].position.y = leapData.pointables[i].tipPosition[1] - 100;
+        spheres[i].position.z = leapData.pointables[i].tipPosition[2];
+      };
+
+      // console.log("Sphere - x:" + sphere.position.x + " y:" + sphere.position.y + " z:" + sphere.position.z);
+    };
+
+    function render() {
+      requestAnimationFrame(render);
+      renderer.render(scene, camera);
+    }
+    </script>
+  </body>
+</html>
